@@ -74,34 +74,33 @@ const PROJECTS = [
     name: "WhereToPark",
     desc: "Full-stack app that helps drivers find available parking spots in real time.",
     stack: ["Node.js", "React", "MongoDB", "AWS"],
-    url: "https://github.com/aribakhan/wheretopark",
+    url: "https://github.com/ariba18/WhereToPark",
   },
   {
     name: "Cafe Deployment Pipeline",
     desc: "CI/CD pipeline that automates build, test, and deploy of a cafe web app.",
     stack: ["AWS CodePipeline", "CodeBuild", "S3", "EC2"],
-    url: "https://github.com/aribakhan/cafe-deployment-pipeline",
+    url: "https://github.com/ariba18/Cafe-Deployment-Pipeline",
   },
   {
     name: "AWS High Availability Infrastructure",
     desc: "Multi-AZ VPC with load balancing and auto scaling for resilient workloads.",
     stack: ["VPC", "ALB", "ASG", "Terraform"],
-    url: "https://github.com/aribakhan/aws-high-availability-infra",
+    url: "https://github.com/ariba18/aws-ha-infrastructure",
   },
   {
     name: "AWS Serverless Todo API",
     desc: "Event-driven REST API built with Lambda, API Gateway, and DynamoDB.",
     stack: ["Lambda", "API Gateway", "DynamoDB", "IAM"],
-    url: "https://github.com/aribakhan/aws-serverless-todo-api",
+    url: "https://github.com/ariba18/aws-serverless-todo-api",
   },
   {
     name: "Prometheus Grafana Monitoring",
     desc: "Observability stack for Kubernetes workloads with dashboards and alerts.",
     stack: ["Prometheus", "Grafana", "Kubernetes", "Helm"],
-    url: "https://github.com/aribakhan/prometheus-grafana-monitoring",
+    url: "https://github.com/ariba18/prometheus-grafana-monitoring",
   },
 ];
-
 
 const CERTS: {
   name: string;
@@ -110,31 +109,42 @@ const CERTS: {
   url: string | null;
 }[] = [
   {
-    name: "AWS Certified Cloud Practitioner",
-    status: "In progress",
+    name: "AWS Cloud Practitioner Essentials",
+    status: "Completed",
     Icon: Cloud,
-    url: "https://www.credly.com/users/aribakhan",
+    url: "/certificates/aws-cloud-practitioner-essentials.pdf",
+  },
+  {
+    name: "AWS Cloud Technical Essentials",
+    status: "Completed",
+    Icon: Server,
+    url: "/certificates/aws-cloud-technical-essentials.pdf",
+  },
+  {
+    name: "AWS Networking Basics",
+    status: "Completed",
+    Icon: Workflow,
+    url: "/certificates/aws-networking-basics.pdf",
+  },
+  {
+    name: "AWS Educate Security Fundamentals",
+    status: "Completed",
+    Icon: ShieldCheck,
+    url: "/certificates/aws-security-fundamentals.pdf",
+  },
+  {
+    name: "Advanced Certification in Cloud & DevOps",
+    status: "Completed",
+    Icon: Cpu,
+    url: "/certificates/advanced-cloud-devops.pdf",
   },
   {
     name: "AWS Solutions Architect – Associate",
-    status: "Studying",
-    Icon: ShieldCheck,
-    url: null,
-  },
-  {
-    name: "HashiCorp Terraform Associate",
-    status: "Planned",
-    Icon: Layers,
-    url: null,
-  },
-  {
-    name: "CKA — Certified Kubernetes Administrator",
-    status: "Planned",
-    Icon: Boxes,
+    status: "Preparing",
+    Icon: Cloud,
     url: null,
   },
 ];
-
 
 const JOURNEY: { title: string; desc: string; Icon: Icon }[] = [
   { title: "Linux", desc: "Shell, file systems, users, and services.", Icon: Terminal },
@@ -303,8 +313,8 @@ function Hero() {
             style={{ animationDelay: "300ms" }}
           >
             <a
-              href="/Ariba_Khan_Resume.pdf"
-              download="Ariba_Khan_Resume.pdf"
+              href="/resume.pdf"
+              download="resume.pdf"
               className="group inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground shadow-[0_0_40px_-10px_rgba(56,189,248,0.6)] transition-transform hover:-translate-y-0.5"
             >
               <Download className="h-4 w-4" />
@@ -320,6 +330,44 @@ function Hero() {
             </a>
           </div>
 
+<div
+  className="fade-up mt-6 flex items-center gap-4"
+  style={{ animationDelay: "260ms" }}
+>
+  <a
+    href="https://github.com/ariba18"
+    target="_blank"
+    rel="noreferrer"
+    className="grid h-12 w-12 place-items-center rounded-full border border-border bg-card transition hover:border-accent hover:text-accent hover:-translate-y-1"
+  >
+    <Github className="h-5 w-5" />
+  </a>
+
+  <a
+    href="https://www.linkedin.com/in/ariba-khan-598935302/"
+    target="_blank"
+    rel="noreferrer"
+    className="grid h-12 w-12 place-items-center rounded-full border border-border bg-card transition hover:border-accent hover:text-accent hover:-translate-y-1"
+  >
+    <Linkedin className="h-5 w-5" />
+  </a>
+
+  <a
+    href="mailto:aribaakhan18@gmail.com"
+    className="grid h-12 w-12 place-items-center rounded-full border border-border bg-card transition hover:border-accent hover:text-accent hover:-translate-y-1"
+  >
+    <Mail className="h-5 w-5" />
+  </a>
+
+  <a
+    href="https://leetcode.com/u/AribaKhan18/"
+    target="_blank"
+    rel="noreferrer"
+    className="grid h-12 w-12 place-items-center rounded-full border border-border bg-card transition hover:border-accent hover:text-accent hover:-translate-y-1"
+  >
+    <Code2 className="h-5 w-5" />
+  </a>
+</div>
           {/* dashboard-style stat cards */}
           <div
             className="fade-up mt-16 grid grid-cols-2 gap-3 md:grid-cols-4"
@@ -372,7 +420,7 @@ function Hero() {
               alt="Portrait of Ariba Khan"
               width={816}
               height={816}
-              className="h-full w-full object-cover"
+              className="h-full w-full object-cover object-center scale-115"
             />
           </div>
         </div>
@@ -573,7 +621,7 @@ function Certifications() {
               </div>
               <div className="flex items-center gap-2">
                 <span className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {c.status === "In progress" ? "Active" : "Roadmap"}
+                  {c.status === "Completed" ? "Completed" : "Preparing"}
                 </span>
                 {c.url ? (
                   <a
@@ -638,15 +686,15 @@ function Journey() {
 /* ------------------------------ Contact ------------------------------ */
 
 const LINKS = [
-  { label: "GitHub", href: "https://github.com/aribakhan", Icon: Github, handle: "@aribakhan" },
+  { label: "GitHub", href: "https://github.com/ariba18", Icon: Github, handle: "@aribakhan" },
   {
     label: "LinkedIn",
-    href: "https://www.linkedin.com/in/aribakhan",
+    href: "https://www.linkedin.com/in/ariba-khan-598935302",
     Icon: Linkedin,
     handle: "in/aribakhan",
   },
-  { label: "Email", href: "mailto:ariba@example.com", Icon: Mail, handle: "ariba@example.com" },
-  { label: "LeetCode", href: "https://leetcode.com/aribakhan", Icon: Code2, handle: "/aribakhan" },
+  { label: "Email", href: "mailto:aribaakhan18@gmail.com", Icon: Mail, handle: "aribaakhan18@gmail.com" },
+  { label: "LeetCode", href: "https://leetcode.com/u/AribaKhan18/", Icon: Code2, handle: "/aribakhan" },
 ];
 
 function Contact() {
