@@ -281,17 +281,21 @@ function Hero() {
           </div>
 
           <h1
-            className="fade-up mt-6 max-w-4xl text-4xl font-semibold leading-[1.05] tracking-tight text-foreground md:text-6xl"
-            style={{ animationDelay: "80ms" }}
-          >
-            Hey, I&apos;m Ariba Khan.
-            <br />
-            <span className="text-muted-foreground">Learning today.</span>{" "}
-            <span className="text-foreground">Building for tomorrow.</span>
-          </h1>
+  className="fade-up mt-6 max-w-4xl leading-[1.05] tracking-tight"
+  style={{ animationDelay: "80ms" }}
+>
+  <span className="block text-lg font-medium text-muted-foreground md:text-xl">
+    Hey, I'm
+  </span>
+
+  <span className="mt-2 block text-5xl font-bold text-foreground md:text-7xl">
+    Ariba Khan.
+  </span>
+
+</h1>
 
           <p
-            className="fade-up mt-6 flex items-center gap-2 text-lg text-muted-foreground"
+            className="fade-up mt-8 flex items-center gap-2 text-base text-muted-foreground"
             style={{ animationDelay: "160ms" }}
           >
             Building in the Cloud
@@ -459,51 +463,27 @@ function SectionHeading({
 function About() {
   return (
     <section id="about" className="scroll-mt-24 py-20">
-      <SectionHeading eyebrow="About" title="Cloud-curious. Support-minded. Always shipping." />
-      <div className="grid gap-6 md:grid-cols-3">
-        <Reveal className="md:col-span-2">
+      <SectionHeading eyebrow="About" title="Turning Infrastructure into Code." />
+      <div className="grid gap-6">
+        <Reveal>
           <div className="hairline lift rounded-2xl bg-card p-8">
             <p className="text-base leading-relaxed text-muted-foreground">
-              I&apos;m an aspiring{" "}
-              <span className="text-foreground">Cloud Support / AWS / DevOps engineer</span>{" "}
-              focused on building reliable, well-observed infrastructure. I enjoy turning messy
-              systems into clean, automated ones — writing Terraform, wiring up pipelines, and
-              helping teams ship with confidence.
-            </p>
-            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              Right now I&apos;m deep in AWS, Linux, and Kubernetes. Every project is a chance to
-              practice production-grade thinking: high availability, least privilege, cost
-              awareness, and clear runbooks.
+  I turn messy infrastructure into clean, automated systems — one Terraform
+  module at a time. From a serverless API running on 19 AWS resources to a
+  monitoring stack that watches its own heartbeat, I build things that are meant
+  to survive contact with production. Because &quot;it works on my machine&quot;
+  was never good enough for me.
+</p>
+
+<p className="mt-4 text-base leading-relaxed text-muted-foreground">
+  I think in pipelines, not platforms — the same IaC and CI/CD principles that
+work on AWS translate across clouds, and I&apos;m keeping an eye on how AI is
+reshaping infra tooling, from smarter monitoring to automated remediation.
+
             </p>
           </div>
         </Reveal>
-        <Reveal delay={100}>
-          <div className="hairline lift flex h-full flex-col justify-between rounded-2xl bg-card p-8">
-            <div>
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                <Sparkles className="h-4 w-4 text-accent" />
-                Currently
-              </div>
-              <ul className="mt-4 space-y-3 text-sm text-foreground">
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent" />
-                  Studying for AWS Cloud Practitioner
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent" />
-                  Building IaC labs with Terraform
-                </li>
-                <li className="flex items-start gap-2">
-                  <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-accent" />
-                  Exploring Kubernetes observability
-                </li>
-              </ul>
-            </div>
-            <div className="mt-6 border-t border-border pt-4 text-xs text-muted-foreground">
-              Based remotely · Open to internships & junior roles
-            </div>
-          </div>
-        </Reveal>
+        
       </div>
     </section>
   );
@@ -586,7 +566,6 @@ function Projects() {
                   <Github className="h-3.5 w-3.5" />
                   GitHub
                 </a>
-                <span className="text-[11px] text-muted-foreground">Case study coming soon</span>
               </div>
             </article>
           </Reveal>
