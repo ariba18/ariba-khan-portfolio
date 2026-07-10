@@ -378,10 +378,10 @@ function Hero() {
             style={{ animationDelay: "380ms" }}
           >
             {[
-              { k: "Region", v: "ca-central-1" },
+              { k: "Region", v: "ap-south-1" },
               { k: "Uptime", v: "99.99%" },
               { k: "Deploys", v: "IaC" },
-              { k: "Status", v: "Shipping" },
+              { k: "Status", v: "Building" },
             ].map((s) => (
               <div
                 key={s.k}
@@ -442,15 +442,14 @@ function SectionHeading({
   desc,
 }: {
   eyebrow: string;
-  title: string;
+  title?: string;
   desc?: string;
 }) {
   return (
     <Reveal>
       <div className="mb-10 max-w-2xl">
-        <div className="text-xs uppercase tracking-[0.2em] text-accent">{eyebrow}</div>
-        <h2 className="mt-3 text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-          {title}
+        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
+          {eyebrow}
         </h2>
         {desc && <p className="mt-3 text-sm text-muted-foreground md:text-base">{desc}</p>}
       </div>
