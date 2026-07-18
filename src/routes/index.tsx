@@ -6,8 +6,6 @@ import {
   Cpu,
   Download,
   ExternalLink,
-
-
   Github,
   Linkedin,
   Mail,
@@ -22,7 +20,9 @@ import {
   Workflow,
   Sparkles,
   BookOpen,
+  Monitor,
 } from "lucide-react";
+
 import type { ComponentType, SVGProps } from "react";
 import { Reveal } from "@/components/portfolio/Reveal";
 import { Starfield } from "@/components/portfolio/Starfield";
@@ -127,11 +127,23 @@ const CERTS: {
     url: "/certificates/aws-networking-basics.pdf",
   },
   {
-    name: "AWS Educate Security Fundamentals",
+    name: "AWS Security Fundamentals",
     status: "Completed",
     Icon: ShieldCheck,
     url: "/certificates/aws-security-fundamentals.pdf",
   },
+  {
+  name: "Linux Essentials",
+  status: "Completed",
+  Icon: Terminal,
+  url: "/certificates/linux-essentials.pdf",
+},
+{
+  name: "Linux Unhatched",
+  status: "Completed",
+  Icon: Terminal,
+  url: "/certificates/linux-unhatched.pdf",
+},
   {
     name: "Advanced Certification in Cloud & DevOps",
     status: "Completed",
