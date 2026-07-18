@@ -133,13 +133,13 @@ const CERTS: {
     url: "/certificates/aws-security-fundamentals.pdf",
   },
   {
-  name: "Linux Essentials",
+  name: "Cisco Linux Essentials",
   status: "Completed",
   Icon: Terminal,
   url: "/certificates/linux-essentials.pdf",
 },
 {
-  name: "Linux Unhatched",
+  name: "Cisco Linux Unhatched",
   status: "Completed",
   Icon: Terminal,
   url: "/certificates/linux-unhatched.pdf",
