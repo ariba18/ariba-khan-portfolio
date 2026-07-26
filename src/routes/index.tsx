@@ -101,13 +101,18 @@ const PROJECTS = [
     url: "https://github.com/ariba18/prometheus-grafana-monitoring",
   },
 ];
-
 const CERTS: {
   name: string;
   status: string;
   Icon: Icon;
   url: string | null;
 }[] = [
+  {
+    name: "AWS Certified Solutions Architect – Associate",
+    status: "AWS Certified",
+    Icon: ShieldCheck,
+    url: "/certificates/aws-solutions-architect-associate.pdf",
+  },
   {
     name: "AWS Cloud Practitioner Essentials",
     status: "Completed",
@@ -127,23 +132,11 @@ const CERTS: {
     url: "/certificates/aws-networking-basics.pdf",
   },
   {
-    name: "AWS Security Fundamentals",
+    name: "AWS Educate Security Fundamentals",
     status: "Completed",
     Icon: ShieldCheck,
     url: "/certificates/aws-security-fundamentals.pdf",
   },
-  {
-  name: "Cisco Linux Essentials",
-  status: "Completed",
-  Icon: Terminal,
-  url: "/certificates/linux-essentials.pdf",
-},
-{
-  name: "Cisco Linux Unhatched",
-  status: "Completed",
-  Icon: Terminal,
-  url: "/certificates/linux-unhatched.pdf",
-},
   {
     name: "Advanced Certification in Cloud & DevOps",
     status: "Completed",
@@ -151,10 +144,16 @@ const CERTS: {
     url: "/certificates/advanced-cloud-devops.pdf",
   },
   {
-    name: "AWS Solutions Architect – Associate",
-    status: "Preparing",
-    Icon: Cloud,
-    url: null,
+    name: "Linux Essentials",
+    status: "Completed",
+    Icon: Monitor,
+    url: "/certificates/linux-essentials.pdf",
+  },
+  {
+    name: "Linux Unhatched",
+    status: "Completed",
+    Icon: Terminal,
+    url: "/certificates/linux-unhatched.pdf",
   },
 ];
 
