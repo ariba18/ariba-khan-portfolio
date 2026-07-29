@@ -604,14 +604,15 @@ function Certifications() {
                   <c.Icon className="h-5 w-5 text-accent" />
                 </span>
                 <div className="min-w-0">
-                  <div className="text-sm font-medium text-foreground">{c.name}</div>
-                  <div className="text-xs text-muted-foreground">{c.status}</div>
-                </div>
+  <div className="text-sm font-medium text-foreground">
+    {c.name}
+  </div>
+</div>
               </div>
               <div className="flex items-center gap-2">
                 <span className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[10px] uppercase tracking-widest text-muted-foreground">
-                  {c.status === "Completed" ? "Completed" : "Preparing"}
-                </span>
+  {c.status}
+</span>
                 {c.url ? (
                   <a
                     href={c.url}
