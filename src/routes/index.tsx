@@ -328,7 +328,7 @@ function Hero() {
             style={{ animationDelay: "300ms" }}
           >
             <a
-              href="/Ariba_Khan_resume.pdf"
+              href="/resume.pdf"
               download="Ariba_Khan_resume.pdf"
               className="group inline-flex items-center gap-2 rounded-lg bg-accent px-5 py-3 text-sm font-medium text-accent-foreground shadow-[0_0_40px_-10px_rgba(56,189,248,0.6)] transition-transform hover:-translate-y-0.5"
             >
