@@ -241,7 +241,7 @@ function Nav() {
           <span className="flex flex-col leading-tight">
             <span className="text-sm font-semibold text-foreground">Ariba Khan</span>
             <span className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground">
-              CLOUD &amp; DEVOPS ENGINEERING
+              CLOUD &amp; DEVOPS
             </span>
           </span>
         </a>
@@ -311,15 +311,7 @@ function Hero() {
 </h1>
 
           <p
-            className="fade-up mt-8 flex items-center gap-2 text-base text-muted-foreground"
-            style={{ animationDelay: "160ms" }}
-          >
-            Building in the Cloud
-            <Cloud className="h-5 w-5 text-accent" />
-          </p>
-
-          <p
-            className="fade-up mt-3 text-sm tracking-wide text-muted-foreground"
+            className="fade-up mt-8 text-base tracking-wide text-muted-foreground"
             style={{ animationDelay: "220ms" }}
           >
             Cloud Support <span className="text-border">•</span> AWS{" "}
@@ -459,18 +451,16 @@ function About() {
         <Reveal>
           <div className="hairline lift rounded-2xl bg-card p-8">
             <p className="text-base leading-relaxed text-muted-foreground">
-  I turn messy infrastructure into clean, automated systems — one Terraform
-  module at a time. From a serverless API running on 19 AWS resources to a
-  monitoring stack that watches its own heartbeat, I build things that are meant
-  to survive contact with production. Because &quot;it works on my machine&quot;
-  was never good enough for me.
-</p>
-
-<p className="mt-4 text-base leading-relaxed text-muted-foreground">
-  I think in pipelines, not platforms — the same IaC and CI/CD principles that
-work on AWS translate across clouds, and I&apos;m keeping an eye on how AI is
-reshaping infra tooling, from smarter monitoring to automated remediation.
-
+              I build cloud infrastructure the repeatable way: written as code, deployed
+              through pipelines, and monitored from day one. My projects range from a
+              multi-AZ AWS setup with load balancing and auto scaling, to a serverless API
+              running on 19 AWS resources, to a Prometheus and Grafana monitoring stack.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              I&apos;m at the start of my career, and I learn by building, breaking and fixing
+              things until &quot;it works on my machine&quot; becomes &quot;it works
+              everywhere&quot;. I&apos;m looking for my first role in Cloud Support, Cloud
+              Engineering or DevOps, where I can learn from a real team and be useful quickly.
             </p>
           </div>
         </Reveal>
@@ -488,7 +478,7 @@ function Skills() {
       <SectionHeading
         eyebrow="Skills"
         title="Tools I use to build in the cloud"
-        desc="Grouped by the layer of the stack I reach for them at."
+        desc="The tools I use to build, ship and monitor infrastructure."
       />
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {SKILLS.map((s, i) => (
@@ -602,7 +592,7 @@ function Certifications() {
     <section id="certifications" className="scroll-mt-24 py-14 md:py-16">
       <SectionHeading
         eyebrow="Certifications"
-        title="On the certification path"
+        title="Credentials behind the work"
         desc="Structured learning to back the hands-on work."
       />
       <div className="grid gap-4 sm:grid-cols-2">
