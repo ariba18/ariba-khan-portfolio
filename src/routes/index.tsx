@@ -300,9 +300,7 @@ function Hero() {
   className="fade-up mt-6 max-w-4xl leading-[1.05] tracking-tight"
   style={{ animationDelay: "80ms" }}
 >
-  <span className="block text-lg font-medium text-muted-foreground md:text-xl">
-    Hey, I'm
-  </span>
+  <span className="block font-mono text-sm tracking-wide text-accent md:text-base">$ whoami</span>
 
   <span className="mt-2 block text-6xl font-bold tracking-tighter text-foreground md:text-8xl">
     Ariba Khan<span className="text-accent">.</span>
