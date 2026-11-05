@@ -422,7 +422,6 @@ function Hero() {
 function SectionHeading({
   eyebrow,
   title,
-  desc,
 }: {
   eyebrow: string;
   title?: string;
@@ -435,7 +434,7 @@ function SectionHeading({
 <h2 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl">
           {title ?? eyebrow}
         </h2>
-        {desc && <p className="mt-3 text-sm text-muted-foreground md:text-base">{desc}</p>}
+        
       </div>
     </Reveal>
   );
@@ -451,16 +450,16 @@ function About() {
         <Reveal>
           <div className="hairline lift rounded-2xl bg-card p-8">
             <p className="text-base leading-relaxed text-muted-foreground">
-              I build cloud infrastructure the repeatable way: written as code, deployed
-              through pipelines, and monitored from day one. My projects range from a
-              multi-AZ AWS setup with load balancing and auto scaling, to a serverless API
-              running on 19 AWS resources, to a Prometheus and Grafana monitoring stack.
+              I turn messy infrastructure into clean, automated systems, one Terraform
+              module at a time. If I click the same button in the AWS console twice, the
+              third time I write code instead.
             </p>
             <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-              I&apos;m at the start of my career, and I learn by building, breaking and fixing
-              things until &quot;it works on my machine&quot; becomes &quot;it works
-              everywhere&quot;. I&apos;m looking for my first role in Cloud Support, Cloud
-              Engineering or DevOps, where I can learn from a real team and be useful quickly.
+              So far that&apos;s meant a serverless API on 19 AWS resources, a multi-AZ
+              setup built to keep serving traffic when one zone has a bad day, and
+              Prometheus and Grafana dashboards that show me what my apps are up to. I
+              break things in my own AWS account so nobody else&apos;s has to, because
+              &quot;it works on my machine&quot; was never good enough for me.
             </p>
           </div>
         </Reveal>
