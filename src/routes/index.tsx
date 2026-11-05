@@ -23,9 +23,10 @@ import {
   Monitor,
 } from "lucide-react";
 
+import { useState } from "react";
 import type { ComponentType, SVGProps } from "react";
 import { Reveal } from "@/components/portfolio/Reveal";
-import { Starfield } from "@/components/portfolio/Starfield";
+
 import aribaPhoto from "@/assets/ariba.jpg";
 
 
@@ -172,7 +173,7 @@ function PortfolioPage() {
     <div className="relative min-h-screen overflow-x-hidden bg-background text-foreground">
       {/* Ambient background — soft clouds + stars */}
       <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-        <Starfield count={45} />
+        
         <div
           className="cloud-blob"
           style={{
@@ -234,11 +235,15 @@ function Nav() {
     <header className="sticky top-0 z-40 border-b border-border/60 bg-background/70 backdrop-blur-xl">
       <div className="mx-auto flex max-w-6xl items-center justify-between px-6 py-4">
         <a href="#top" className="group flex items-center gap-2 text-sm font-medium tracking-tight">
-          <span className="grid h-8 w-8 place-items-center rounded-lg bg-card ring-1 ring-border">
-            <Cloud className="h-4 w-4 text-accent" />
+          <span className="grid h-9 w-9 place-items-center rounded-lg bg-accent text-sm font-bold text-accent-foreground">
+            AK
           </span>
-          <span className="text-foreground">Ariba Khan</span>
-          <span className="text-muted-foreground">/ Cloud</span>
+          <span className="flex flex-col leading-tight">
+            <span className="text-sm font-semibold text-foreground">Ariba Khan</span>
+            <span className="font-mono text-[10px] tracking-[0.18em] text-muted-foreground">
+              CLOUD &amp; DEVOPS
+            </span>
+          </span>
         </a>
         <nav className="hidden md:block">
           <ul className="flex items-center gap-1">
@@ -269,7 +274,7 @@ function Nav() {
 
 function Hero() {
   return (
-    <section id="top" className="relative pt-24 pb-28 md:pt-32 md:pb-36">
+    <section id="top" className="relative pt-16 pb-12 md:pt-24 md:pb-16">
       {/* soft blue glow behind hero */}
       <div
         aria-hidden
@@ -281,7 +286,7 @@ function Hero() {
         }}
       />
 
-      <div className="relative grid items-start gap-12 md:grid-cols-[1fr_auto] md:gap-16">
+      <div className="relative grid items-center gap-12 md:grid-cols-[1fr_auto] md:gap-16">
         <div className="min-w-0">
           <div className="fade-up inline-flex items-center gap-2 rounded-full border border-border bg-card/60 px-3 py-1 text-xs text-muted-foreground backdrop-blur">
             <span className="relative flex h-1.5 w-1.5">
@@ -295,26 +300,16 @@ function Hero() {
   className="fade-up mt-6 max-w-4xl leading-[1.05] tracking-tight"
   style={{ animationDelay: "80ms" }}
 >
-  <span className="block text-lg font-medium text-muted-foreground md:text-xl">
-    Hey, I'm
-  </span>
+  <span className="block font-mono text-sm tracking-wide text-accent md:text-base">$ whoami</span>
 
-  <span className="mt-2 block text-5xl font-bold text-foreground md:text-7xl">
-    Ariba Khan.
+  <span className="mt-2 block text-6xl font-bold tracking-tighter text-foreground md:text-8xl">
+    Ariba Khan<span className="text-accent">.</span>
   </span>
 
 </h1>
 
           <p
-            className="fade-up mt-8 flex items-center gap-2 text-base text-muted-foreground"
-            style={{ animationDelay: "160ms" }}
-          >
-            Building in the Cloud
-            <Cloud className="h-5 w-5 text-accent" />
-          </p>
-
-          <p
-            className="fade-up mt-3 text-sm tracking-wide text-muted-foreground"
+            className="fade-up mt-8 text-base tracking-wide text-muted-foreground"
             style={{ animationDelay: "220ms" }}
           >
             Cloud Support <span className="text-border">•</span> AWS{" "}
@@ -383,31 +378,6 @@ function Hero() {
     <Code2 className="h-5 w-5" />
   </a>
 </div>
-          {/* dashboard-style stat cards */}
-          <div
-            className="fade-up mt-16 grid grid-cols-2 gap-3 md:grid-cols-4"
-            style={{ animationDelay: "380ms" }}
-          >
-            {[
-              { k: "Region", v: "ap-south-1" },
-              { k: "Uptime", v: "99.99%" },
-              { k: "Deploys", v: "IaC" },
-              { k: "Status", v: "Building" },
-            ].map((s) => (
-              <div
-                key={s.k}
-                className="hairline rounded-xl bg-card/60 p-4 backdrop-blur"
-              >
-                <div className="text-[11px] uppercase tracking-widest text-muted-foreground">
-                  {s.k}
-                </div>
-                <div className="mt-1 flex items-center gap-2 text-sm text-foreground">
-                  <span className="h-1.5 w-1.5 rounded-full bg-accent shadow-[0_0_10px_rgba(56,189,248,0.8)]" />
-                  {s.v}
-                </div>
-              </div>
-            ))}
-          </div>
         </div>
 
         {/* Circular portrait */}
@@ -425,7 +395,7 @@ function Hero() {
               transform: "scale(1.15)",
             }}
           />
-          <div className="relative h-44 w-44 overflow-hidden rounded-full ring-1 ring-border md:h-56 md:w-56">
+          <div className="relative h-56 w-56 overflow-hidden rounded-full ring-1 ring-border md:h-80 md:w-80">
             <div
               aria-hidden
               className="pointer-events-none absolute inset-0 rounded-full ring-1 ring-inset ring-accent/30"
@@ -450,7 +420,6 @@ function Hero() {
 function SectionHeading({
   eyebrow,
   title,
-  desc,
 }: {
   eyebrow: string;
   title?: string;
@@ -459,10 +428,11 @@ function SectionHeading({
   return (
     <Reveal>
       <div className="mb-10 max-w-2xl">
-        <h2 className="text-2xl font-semibold tracking-tight text-foreground md:text-3xl">
-          {eyebrow}
+        <p className="mb-4 flex items-center gap-3 font-mono text-xs uppercase tracking-[0.2em] text-accent"><span className="h-px w-7 bg-accent" />{eyebrow}</p>
+<h2 className="text-3xl font-bold tracking-tight text-foreground md:text-5xl">
+          {title ?? eyebrow}
         </h2>
-        {desc && <p className="mt-3 text-sm text-muted-foreground md:text-base">{desc}</p>}
+        
       </div>
     </Reveal>
   );
@@ -472,24 +442,22 @@ function SectionHeading({
 
 function About() {
   return (
-    <section id="about" className="scroll-mt-24 py-20">
+    <section id="about" className="scroll-mt-24 py-14 md:py-16">
       <SectionHeading eyebrow="About" title="Turning Infrastructure into Code." />
       <div className="grid gap-6">
         <Reveal>
           <div className="hairline lift rounded-2xl bg-card p-8">
             <p className="text-base leading-relaxed text-muted-foreground">
-  I turn messy infrastructure into clean, automated systems — one Terraform
-  module at a time. From a serverless API running on 19 AWS resources to a
-  monitoring stack that watches its own heartbeat, I build things that are meant
-  to survive contact with production. Because &quot;it works on my machine&quot;
-  was never good enough for me.
-</p>
-
-<p className="mt-4 text-base leading-relaxed text-muted-foreground">
-  I think in pipelines, not platforms — the same IaC and CI/CD principles that
-work on AWS translate across clouds, and I&apos;m keeping an eye on how AI is
-reshaping infra tooling, from smarter monitoring to automated remediation.
-
+              I turn messy infrastructure into clean, automated systems, one Terraform
+              module at a time. If I click the same button in the AWS console twice, the
+              third time I write code instead.
+            </p>
+            <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+              So far that&apos;s meant a serverless API on 19 AWS resources, a multi-AZ
+              setup built to keep serving traffic when one zone has a bad day, and
+              Prometheus and Grafana dashboards that show me what my apps are up to. I
+              break things in my own AWS account so nobody else&apos;s has to, because
+              &quot;it works on my machine&quot; was never good enough for me.
             </p>
           </div>
         </Reveal>
@@ -503,11 +471,11 @@ reshaping infra tooling, from smarter monitoring to automated remediation.
 
 function Skills() {
   return (
-    <section id="skills" className="scroll-mt-24 py-20">
+    <section id="skills" className="scroll-mt-24 py-14 md:py-16">
       <SectionHeading
         eyebrow="Skills"
         title="Tools I use to build in the cloud"
-        desc="Grouped by the layer of the stack I reach for them at."
+        desc="The tools I use to build, ship and monitor infrastructure."
       />
       <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6">
         {SKILLS.map((s, i) => (
@@ -527,39 +495,69 @@ function Skills() {
 
 /* ------------------------------ Projects ------------------------------ */
 
+const PROJECT_CATS: Record<string, string> = {
+  "WhereToPark": "Full-stack",
+  "Cafe Deployment Pipeline": "CI/CD",
+  "AWS High Availability Infrastructure": "Infrastructure as Code",
+  "AWS Serverless Todo API": "Serverless",
+  "Prometheus Grafana Monitoring": "Observability",
+};
+
 function Projects() {
+  const [active, setActive] = useState("All");
+  const cats = ["All", ...Array.from(new Set(PROJECTS.map((p) => PROJECT_CATS[p.name])))];
+  const count = (c: string) =>
+    c === "All" ? PROJECTS.length : PROJECTS.filter((p) => PROJECT_CATS[p.name] === c).length;
+  const shown = PROJECTS.filter((p) => active === "All" || PROJECT_CATS[p.name] === active);
+
   return (
-    <section id="projects" className="scroll-mt-24 py-20">
+    <section id="projects" className="scroll-mt-24 py-14 md:py-16">
       <SectionHeading
-        eyebrow="Featured Projects"
+        eyebrow="Projects"
         title="Selected cloud & DevOps work"
-        desc="Small, focused builds — each one a step deeper into production-grade infrastructure."
+        desc="Small, focused builds â€” each one a step deeper into production-grade infrastructure."
       />
+
+      <div className="mb-8 flex flex-wrap gap-2">
+        {cats.map((c) => (
+          <button
+            key={c}
+            onClick={() => setActive(c)}
+            className={`inline-flex items-center gap-2 rounded-full border px-4 py-2 font-mono text-xs transition-colors ${
+              active === c
+                ? "border-accent bg-accent text-accent-foreground"
+                : "border-border text-muted-foreground hover:border-accent/50 hover:text-foreground"
+            }`}
+          >
+            {c}
+            <span className="opacity-60">{count(c)}</span>
+          </button>
+        ))}
+      </div>
+
       <div className="grid gap-5 md:grid-cols-2">
-        {PROJECTS.map((p, i) => (
+        {shown.map((p, i) => (
           <Reveal key={p.name} delay={i * 60}>
             <article className="hairline lift group relative flex h-full flex-col rounded-2xl bg-card p-6">
-              <div className="flex items-start justify-between gap-4">
-                <div className="flex items-center gap-3">
-                  <span className="grid h-10 w-10 place-items-center rounded-lg bg-secondary ring-1 ring-border">
-                    <Cpu className="h-5 w-5 text-accent" />
-                  </span>
-                  <h3 className="text-lg font-semibold tracking-tight text-foreground">
-                    {p.name}
-                  </h3>
-                </div>
-                <span className="text-[11px] uppercase tracking-widest text-muted-foreground">
-                  0{i + 1}
+              <div className="flex items-center justify-between gap-4">
+                <span className="font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
+                  {PROJECT_CATS[p.name]}
+                </span>
+                <span className="rounded-full border border-border px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-accent">
+                  Code
                 </span>
               </div>
 
-              <p className="mt-4 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+              <h3 className="mt-4 text-xl font-semibold tracking-tight text-foreground">
+                {p.name}
+              </h3>
+              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
 
               <div className="mt-5 flex flex-wrap gap-1.5">
                 {p.stack.map((t) => (
                   <span
                     key={t}
-                    className="rounded-md border border-border bg-secondary px-2 py-1 text-[11px] text-muted-foreground"
+                    className="rounded-md border border-border bg-secondary px-2 py-1 font-mono text-[11px] text-muted-foreground"
                   >
                     {t}
                   </span>
@@ -584,21 +582,20 @@ function Projects() {
     </section>
   );
 }
-
 /* ------------------------------ Certifications ------------------------------ */
 
 function Certifications() {
   return (
-    <section id="certifications" className="scroll-mt-24 py-20">
+    <section id="certifications" className="scroll-mt-24 py-14 md:py-16">
       <SectionHeading
         eyebrow="Certifications"
-        title="On the certification path"
+        title="Credentials behind the work"
         desc="Structured learning to back the hands-on work."
       />
       <div className="grid gap-4 sm:grid-cols-2">
         {CERTS.map((c, i) => (
           <Reveal key={c.name} delay={i * 60}>
-            <div className="hairline lift flex h-full flex-col gap-4 rounded-2xl bg-card p-5 sm:flex-row sm:items-center sm:justify-between">
+            <div className={`hairline lift flex h-full flex-col gap-4 rounded-2xl bg-card p-5 sm:flex-row sm:items-center sm:justify-between ${i === 0 ? "ring-1 ring-accent/50" : ""}`}>
               <div className="flex items-center gap-4">
                 <span className="grid h-10 w-10 shrink-0 place-items-center rounded-lg bg-secondary ring-1 ring-border">
                   <c.Icon className="h-5 w-5 text-accent" />
@@ -610,7 +607,7 @@ function Certifications() {
 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="rounded-full border border-border bg-secondary px-2.5 py-1 text-[10px] uppercase tracking-widest text-muted-foreground">
+                <span className="rounded-full border border-border bg-secondary px-2.5 py-1 font-mono text-[10px] uppercase tracking-widest text-muted-foreground">
   {c.status}
 </span>
                 {c.url ? (
@@ -642,7 +639,7 @@ function Certifications() {
 
 function Journey() {
   return (
-    <section id="journey" className="scroll-mt-24 py-20">
+    <section id="journey" className="scroll-mt-24 py-14 md:py-16">
       <SectionHeading
         eyebrow="Cloud Journey"
         title="From the shell to the cluster"
@@ -660,7 +657,7 @@ function Journey() {
                 <h3 className="text-sm font-semibold tracking-tight text-foreground">
                   {j.title}
                 </h3>
-                <span className="ml-auto text-[11px] uppercase tracking-widest text-muted-foreground">
+                <span className="ml-auto font-mono text-[11px] uppercase tracking-widest text-muted-foreground">
                   Step {String(i + 1).padStart(2, "0")}
                 </span>
               </div>
@@ -676,20 +673,20 @@ function Journey() {
 /* ------------------------------ Contact ------------------------------ */
 
 const LINKS = [
-  { label: "GitHub", href: "https://github.com/ariba18", Icon: Github, handle: "@aribakhan" },
+  { label: "GitHub", href: "https://github.com/ariba18", Icon: Github, handle: "@ariba18" },
   {
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/ariba-khan-598935302",
     Icon: Linkedin,
-    handle: "in/aribakhan",
+    handle: "in/ariba-khan-598935302",
   },
   { label: "Email", href: "mailto:aribaakhan18@gmail.com", Icon: Mail, handle: "aribaakhan18@gmail.com" },
-  { label: "LeetCode", href: "https://leetcode.com/u/AribaKhan18/", Icon: Code2, handle: "/aribakhan" },
+  { label: "LeetCode", href: "https://leetcode.com/u/AribaKhan18/", Icon: Code2, handle: "/AribaKhan18" },
 ];
 
 function Contact() {
   return (
-    <section id="contact" className="scroll-mt-24 py-20">
+    <section id="contact" className="scroll-mt-24 py-14 md:py-16">
       <SectionHeading
         eyebrow="Contact"
         title="Let&apos;s build something reliable"
@@ -726,7 +723,7 @@ function Contact() {
 
 function Footer() {
   return (
-    <footer className="relative mt-20 border-t border-border/60">
+    <footer className="relative mt-8 border-t border-border/60">
       <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-4 px-6 py-10 md:flex-row md:items-center">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Cloud className="h-4 w-4 text-accent" />
