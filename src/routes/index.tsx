@@ -23,7 +23,7 @@ import {
   Monitor,
 } from "lucide-react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ComponentType, SVGProps } from "react";
 import { Reveal } from "@/components/portfolio/Reveal";
 
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
   component: PortfolioPage,
   head: () => ({
     meta: [
-      { title: "Ariba Khan — Cloud Support & DevOps" },
+      { title: "Ariba Khan - Cloud Support & DevOps" },
       {
         name: "description",
         content:
@@ -205,6 +205,7 @@ function PortfolioPage() {
         />
       </div>
 
+      <ScrollProgress />
       <Nav />
 
       <main className="mx-auto max-w-6xl px-6">
@@ -223,6 +224,26 @@ function PortfolioPage() {
 }
 
 /* ------------------------------ Nav ------------------------------ */
+
+function ScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      setP(h > 0 ? (window.scrollY / h) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div
+      aria-hidden
+      className="fixed left-0 top-0 z-50 h-[2px] bg-accent"
+      style={{ width: `${p}%` }}
+    />
+  );
+}
 
 function Nav() {
   return (
