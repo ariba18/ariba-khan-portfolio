@@ -77,14 +77,14 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Ariba Khan — Cloud Support & AWS DevOps Engineer" },
+      { title: "Ariba Khan — Cloud Support & DevOps" },
       {
         name: "description",
         content:
           "Portfolio of Ariba Khan, an aspiring Cloud Support / AWS / DevOps engineer building reliable infrastructure with AWS, Linux, Terraform, and Kubernetes.",
       },
       { name: "author", content: "Ariba Khan" },
-      { property: "og:title", content: "Ariba Khan — Cloud Support & AWS DevOps Engineer" },
+      { property: "og:title", content: "Ariba Khan — Cloud Support & DevOps" },
       {
         property: "og:description",
         content:

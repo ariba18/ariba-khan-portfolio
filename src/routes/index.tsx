@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
   component: PortfolioPage,
   head: () => ({
     meta: [
-      { title: "Ariba Khan — Cloud Support & AWS DevOps Engineer" },
+      { title: "Ariba Khan — Cloud Support & DevOps" },
       {
         name: "description",
         content:
@@ -72,33 +72,27 @@ const SKILLS: { name: string; Icon: Icon }[] = [
 
 const PROJECTS = [
   {
-    name: "WhereToPark",
-    desc: "Full-stack app that helps drivers find available parking spots in real time.",
-    stack: ["Node.js", "React", "MongoDB", "AWS"],
-    url: "https://github.com/ariba18/WhereToPark",
-  },
-  {
-    name: "Cafe Deployment Pipeline",
-    desc: "CI/CD pipeline that automates build, test, and deploy of a cafe web app.",
-    stack: ["AWS CodePipeline", "CodeBuild", "S3", "EC2"],
-    url: "https://github.com/ariba18/Cafe-Deployment-Pipeline",
+    name: "AWS Serverless Todo API",
+    desc: "Serverless REST API on Python Lambda, API Gateway and DynamoDB, defined in Terraform (19 resources in ap-south-1) and deployed through GitHub Actions with a manual-approval apply gate.",
+    stack: ["Lambda", "API Gateway", "DynamoDB", "Terraform", "GitHub Actions", "CloudWatch"],
+    url: "https://github.com/ariba18/aws-serverless-todo-api",
   },
   {
     name: "AWS High Availability Infrastructure",
-    desc: "Multi-AZ VPC with load balancing and auto scaling for resilient workloads.",
+    desc: "Three-tier, highly available AWS architecture with a load balancer and auto scaling, provisioned entirely with Terraform.",
     stack: ["VPC", "ALB", "ASG", "Terraform"],
     url: "https://github.com/ariba18/aws-ha-infrastructure",
   },
   {
-    name: "AWS Serverless Todo API",
-    desc: "Event-driven REST API built with Lambda, API Gateway, and DynamoDB.",
-    stack: ["Lambda", "API Gateway", "DynamoDB", "IAM"],
-    url: "https://github.com/ariba18/aws-serverless-todo-api",
+    name: "Cafe Deployment Pipeline",
+    desc: "CI/CD pipeline on EC2 where Jenkins builds a cafe web app, packages it with Docker and deploys it to Kubernetes.",
+    stack: ["Jenkins", "Docker", "Kubernetes", "EC2"],
+    url: "https://github.com/ariba18/Cafe-Deployment-Pipeline",
   },
   {
     name: "Prometheus Grafana Monitoring",
-    desc: "Observability stack for Kubernetes workloads with dashboards and alerts.",
-    stack: ["Prometheus", "Grafana", "Kubernetes", "Helm"],
+    desc: "Python Flask task-management API instrumented with custom Prometheus metrics and visualized in Grafana dashboards, run with Docker Compose.",
+    stack: ["Flask", "Prometheus", "Grafana", "Docker Compose"],
     url: "https://github.com/ariba18/prometheus-grafana-monitoring",
   },
 ];
@@ -496,10 +490,9 @@ function Skills() {
 /* ------------------------------ Projects ------------------------------ */
 
 const PROJECT_CATS: Record<string, string> = {
-  "WhereToPark": "Full-stack",
-  "Cafe Deployment Pipeline": "CI/CD",
-  "AWS High Availability Infrastructure": "Infrastructure as Code",
   "AWS Serverless Todo API": "Serverless",
+  "AWS High Availability Infrastructure": "Infrastructure as Code",
+  "Cafe Deployment Pipeline": "CI/CD",
   "Prometheus Grafana Monitoring": "Observability",
 };
 
