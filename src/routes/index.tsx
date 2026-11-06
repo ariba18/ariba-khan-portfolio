@@ -23,7 +23,7 @@ import {
   Monitor,
 } from "lucide-react";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { ComponentType, SVGProps } from "react";
 import { Reveal } from "@/components/portfolio/Reveal";
 
@@ -34,7 +34,7 @@ export const Route = createFileRoute("/")({
   component: PortfolioPage,
   head: () => ({
     meta: [
-      { title: "Ariba Khan — Cloud Support & AWS DevOps Engineer" },
+      { title: "Ariba Khan - Cloud Support & DevOps" },
       {
         name: "description",
         content:
@@ -72,33 +72,31 @@ const SKILLS: { name: string; Icon: Icon }[] = [
 
 const PROJECTS = [
   {
-    name: "WhereToPark",
-    desc: "Full-stack app that helps drivers find available parking spots in real time.",
-    stack: ["Node.js", "React", "MongoDB", "AWS"],
-    url: "https://github.com/ariba18/WhereToPark",
-  },
-  {
-    name: "Cafe Deployment Pipeline",
-    desc: "CI/CD pipeline that automates build, test, and deploy of a cafe web app.",
-    stack: ["AWS CodePipeline", "CodeBuild", "S3", "EC2"],
-    url: "https://github.com/ariba18/Cafe-Deployment-Pipeline",
-  },
-  {
-    name: "AWS High Availability Infrastructure",
-    desc: "Multi-AZ VPC with load balancing and auto scaling for resilient workloads.",
-    stack: ["VPC", "ALB", "ASG", "Terraform"],
-    url: "https://github.com/ariba18/aws-ha-infrastructure",
-  },
-  {
     name: "AWS Serverless Todo API",
-    desc: "Event-driven REST API built with Lambda, API Gateway, and DynamoDB.",
-    stack: ["Lambda", "API Gateway", "DynamoDB", "IAM"],
+    desc: "Serverless REST API on Python Lambda, API Gateway and DynamoDB. All 19 AWS resources are defined in Terraform, and GitHub Actions validates every push with fmt, validate and plan, with apply behind manual approval.",
+    flow: ["Client", "API Gateway", "Lambda", "DynamoDB"],
+    stack: ["Lambda", "API Gateway", "DynamoDB", "Terraform", "GitHub Actions", "CloudWatch"],
     url: "https://github.com/ariba18/aws-serverless-todo-api",
   },
   {
+    name: "AWS High Availability Infrastructure",
+    desc: "Secure, fault-tolerant 3-tier architecture across two Availability Zones: a load balancer in front of EC2 servers in private subnets managed by an Auto Scaling group, with least-privilege security groups and IAM, all provisioned with Terraform.",
+    flow: ["Internet", "Load Balancer", "Auto Scaling (2 AZs)", "S3 / DynamoDB"],
+    stack: ["VPC", "ALB", "ASG", "NAT Gateway", "Secrets Manager", "Terraform"],
+    url: "https://github.com/ariba18/aws-ha-infrastructure",
+  },
+  {
+    name: "Cafe Deployment Pipeline",
+    desc: "CI/CD pipeline where Jenkins builds a Docker image of a cafe website and pushes it to Docker Hub, and the image runs as a container on AWS EC2. Kubernetes manifests are included for future orchestration.",
+    flow: ["GitHub", "Jenkins", "Docker Hub", "AWS EC2"],
+    stack: ["Jenkins", "Docker", "Docker Hub", "AWS EC2", "Nginx"],
+    url: "https://github.com/ariba18/Cafe-Deployment-Pipeline",
+  },
+  {
     name: "Prometheus Grafana Monitoring",
-    desc: "Observability stack for Kubernetes workloads with dashboards and alerts.",
-    stack: ["Prometheus", "Grafana", "Kubernetes", "Helm"],
+    desc: "Python Flask task-management API instrumented with five custom Prometheus metrics (requests, latency, errors, active requests, task count), scraped every 15 seconds and visualized in Grafana, all run with Docker Compose.",
+    flow: ["Flask API", "Prometheus", "Grafana"],
+    stack: ["Flask", "Prometheus", "Grafana", "Docker Compose"],
     url: "https://github.com/ariba18/prometheus-grafana-monitoring",
   },
 ];
@@ -211,6 +209,7 @@ function PortfolioPage() {
         />
       </div>
 
+      <ScrollProgress />
       <Nav />
 
       <main className="mx-auto max-w-6xl px-6">
@@ -229,6 +228,26 @@ function PortfolioPage() {
 }
 
 /* ------------------------------ Nav ------------------------------ */
+
+function ScrollProgress() {
+  const [p, setP] = useState(0);
+  useEffect(() => {
+    const onScroll = () => {
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      setP(h > 0 ? (window.scrollY / h) * 100 : 0);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+  return (
+    <div
+      aria-hidden
+      className="fixed left-0 top-0 z-50 h-[2px] bg-accent"
+      style={{ width: `${p}%` }}
+    />
+  );
+}
 
 function Nav() {
   return (
@@ -496,10 +515,9 @@ function Skills() {
 /* ------------------------------ Projects ------------------------------ */
 
 const PROJECT_CATS: Record<string, string> = {
-  "WhereToPark": "Full-stack",
-  "Cafe Deployment Pipeline": "CI/CD",
-  "AWS High Availability Infrastructure": "Infrastructure as Code",
   "AWS Serverless Todo API": "Serverless",
+  "AWS High Availability Infrastructure": "Infrastructure as Code",
+  "Cafe Deployment Pipeline": "CI/CD",
   "Prometheus Grafana Monitoring": "Observability",
 };
 
@@ -552,6 +570,17 @@ function Projects() {
                 {p.name}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+
+              <div className="mt-5 flex flex-wrap items-center gap-1.5 rounded-lg border border-border bg-background/50 p-3">
+                {p.flow.map((step, idx) => (
+                  <span key={step} className="flex items-center gap-1.5">
+                    <span className="rounded-md border border-accent/30 bg-accent/10 px-2 py-1 font-mono text-[11px] text-foreground">
+                      {step}
+                    </span>
+                    {idx < p.flow.length - 1 && <ArrowRight className="h-3 w-3 text-accent" />}
+                  </span>
+                ))}
+              </div>
 
               <div className="mt-5 flex flex-wrap gap-1.5">
                 {p.stack.map((t) => (
