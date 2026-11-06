@@ -73,25 +73,29 @@ const SKILLS: { name: string; Icon: Icon }[] = [
 const PROJECTS = [
   {
     name: "AWS Serverless Todo API",
-    desc: "Serverless REST API on Python Lambda, API Gateway and DynamoDB, defined in Terraform (19 resources in ap-south-1) and deployed through GitHub Actions with a manual-approval apply gate.",
+    desc: "Serverless REST API on Python Lambda, API Gateway and DynamoDB. All 19 AWS resources are defined in Terraform, and GitHub Actions validates every push with fmt, validate and plan, with apply behind manual approval.",
+    flow: ["Client", "API Gateway", "Lambda", "DynamoDB"],
     stack: ["Lambda", "API Gateway", "DynamoDB", "Terraform", "GitHub Actions", "CloudWatch"],
     url: "https://github.com/ariba18/aws-serverless-todo-api",
   },
   {
     name: "AWS High Availability Infrastructure",
-    desc: "Three-tier, highly available AWS architecture with a load balancer and auto scaling, provisioned entirely with Terraform.",
-    stack: ["VPC", "ALB", "ASG", "Terraform"],
+    desc: "Secure, fault-tolerant 3-tier architecture across two Availability Zones: a load balancer in front of EC2 servers in private subnets managed by an Auto Scaling group, with least-privilege security groups and IAM, all provisioned with Terraform.",
+    flow: ["Internet", "Load Balancer", "Auto Scaling (2 AZs)", "S3 / DynamoDB"],
+    stack: ["VPC", "ALB", "ASG", "NAT Gateway", "Secrets Manager", "Terraform"],
     url: "https://github.com/ariba18/aws-ha-infrastructure",
   },
   {
     name: "Cafe Deployment Pipeline",
-    desc: "CI/CD pipeline on EC2 where Jenkins builds a cafe web app, packages it with Docker and deploys it to Kubernetes.",
-    stack: ["Jenkins", "Docker", "Kubernetes", "EC2"],
+    desc: "CI/CD pipeline where Jenkins builds a Docker image of a cafe website and pushes it to Docker Hub, and the image runs as a container on AWS EC2. Kubernetes manifests are included for future orchestration.",
+    flow: ["GitHub", "Jenkins", "Docker Hub", "AWS EC2"],
+    stack: ["Jenkins", "Docker", "Docker Hub", "AWS EC2", "Nginx"],
     url: "https://github.com/ariba18/Cafe-Deployment-Pipeline",
   },
   {
     name: "Prometheus Grafana Monitoring",
-    desc: "Python Flask task-management API instrumented with custom Prometheus metrics and visualized in Grafana dashboards, run with Docker Compose.",
+    desc: "Python Flask task-management API instrumented with five custom Prometheus metrics (requests, latency, errors, active requests, task count), scraped every 15 seconds and visualized in Grafana, all run with Docker Compose.",
+    flow: ["Flask API", "Prometheus", "Grafana"],
     stack: ["Flask", "Prometheus", "Grafana", "Docker Compose"],
     url: "https://github.com/ariba18/prometheus-grafana-monitoring",
   },
@@ -566,6 +570,17 @@ function Projects() {
                 {p.name}
               </h3>
               <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{p.desc}</p>
+
+              <div className="mt-5 flex flex-wrap items-center gap-1.5 rounded-lg border border-border bg-background/50 p-3">
+                {p.flow.map((step, idx) => (
+                  <span key={step} className="flex items-center gap-1.5">
+                    <span className="rounded-md border border-accent/30 bg-accent/10 px-2 py-1 font-mono text-[11px] text-foreground">
+                      {step}
+                    </span>
+                    {idx < p.flow.length - 1 && <ArrowRight className="h-3 w-3 text-accent" />}
+                  </span>
+                ))}
+              </div>
 
               <div className="mt-5 flex flex-wrap gap-1.5">
                 {p.stack.map((t) => (
